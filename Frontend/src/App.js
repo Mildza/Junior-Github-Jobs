@@ -4,13 +4,12 @@ import './App.css';
 import Jobs from './components/Jobs/Jobs';
 
 async function fetchJobs(updateCb) {
-  const res = await fetch('http://localhost:3001/api/jobs');
+  const res = await fetch('/api/jobs');
   let json = await res.json();
   updateCb(json);
 }
 
 function App() {
-
   const [jobList, setJobList] = React.useState([]);
 
   React.useEffect(() => {
