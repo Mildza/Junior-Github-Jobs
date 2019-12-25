@@ -16,4 +16,12 @@ app.get('/api/jobs', async (req, res) => {
   return res.send(jobs)
 })
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static('Frontend/build'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "Frontend", "build", "index.html"))
+  })
+}
+
 app.listen(process.env.PORT || 3001, () => console.log(`Its starts`))
