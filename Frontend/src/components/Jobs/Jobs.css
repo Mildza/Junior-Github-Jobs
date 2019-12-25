@@ -1,0 +1,25 @@
+.disabled{
+  pointer-events: none;
+  background-color: rgb(219, 219, 219);
+}
+.page-link{
+  cursor: pointer;
+}
+
+.active {
+  background-color:blue;
+  color:white !important;
+}
+.active:hover{
+  background-color:blue;
+  color:black !important;
+}
+
+.page-num {
+  text-align: right;
+  font-style:italic;
+}
+
+.page-num span{
+  color:blue;
+}

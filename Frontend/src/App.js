@@ -1,27 +1,24 @@
 import React from 'react';
 import './App.css';
 
-import Jobs from './Jobs';
-
-const JOB_API_URL = '/api/jobs';
+import Jobs from './components/Jobs/Jobs';
 
 async function fetchJobs(updateCb) {
-  const res = await fetch(JOB_API_URL);
+  const res = await fetch('http://localhost:3001/api/jobs');
   let json = await res.json();
-
   updateCb(json);
 }
 
 function App() {
 
-  const [jobList, updateJobs] = React.useState([]);
+  const [jobList, setJobList] = React.useState([]);
 
   React.useEffect(() => {
-    fetchJobs(updateJobs);
+    fetchJobs(setJobList);
   }, [])
 
   return (
-    <div className="App">
+    <div className="container">
       <Jobs jobs={jobList} />
     </div>
   );

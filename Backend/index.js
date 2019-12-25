@@ -4,16 +4,14 @@ const app = express()
 const CronJob = require('cron').CronJob;
 const fetchGithub = require('./github')
 
-// fetch github jobs
-new CronJob('1 */1 * * *', fetchGithub, null, true, 'America/Los_Angeles');
-// const redis = require("redis"),
-//   client = redis.createClient();
+let jobs
 
-// const { promisify } = require('util');
-// const getAsync = promisify(client.get).bind(client);
-
+const getAsync = async () => {
+  new CronJob('1 */1 * * *', fetchGithub, null, true, 'America/Los_Angeles');
+  jobs = await fetchGithub();
+}
+getAsync()
 app.get('/api/jobs', async (req, res) => {
-  const jobs = await fetchGithub();
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   return res.send(jobs)
 })
