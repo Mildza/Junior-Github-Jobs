@@ -16,4 +16,4 @@ app.get('/api/jobs', async (req, res) => {
   return res.send(jobs)
 })
 
-app.listen(3001, () => console.log(`Its starts`))
+app.listen(process.env.PORT || 3001, () => console.log(`Its starts`))
