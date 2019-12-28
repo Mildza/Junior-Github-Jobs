@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
 import Jobs from './components/Jobs/Jobs';
 
-async function fetchJobs(updateCb) {
-  const res = await fetch('/api/jobs');
-  let json = await res.json();
-  updateCb(json);
-}
-
 function App() {
   const [jobList, setJobList] = React.useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchJobs(setJobList);
   }, [])
+
+  async function fetchJobs(updateCb) {
+    const res = await fetch('/api/jobs');
+    let json = await res.json();
+    updateCb(json);
+  }
 
   return (
     <div className="container">
