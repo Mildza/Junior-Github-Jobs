@@ -16,11 +16,12 @@ function App() {
     updateCb(json);
   }
 
-  return (
-    <div className="container">
-      <Jobs jobs={jobList} />
-    </div>
-  );
+  return jobList ?
+    (
+      <div className="container">
+        <Jobs jobs={jobList} />
+      </div>
+    ) : <div className='loader'></div>
 }
 
 export default App;
