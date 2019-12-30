@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import './Job.css'
-import logo from '../../../public/logo.png';
+import logo from './logo.png';
 
 const Job = ({ job, clicked }) => {
 
