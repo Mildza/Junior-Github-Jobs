@@ -63,29 +63,33 @@ export default function Jobs({ jobs }) {
   }
 
   return (
-    <div className="col-md-8 offset-md-2">
-      <h2 className="text-center">Junior Github Jobs</h2>
-      <h5 className="text-right">Found {numJobs} Jobs</h5>
-      {jobsOnPage.map((job, i) => <Job key={i} job={job}
-        clicked={() => {
-          openModal()
-          selectedJob(job)
-        }} />
-      )}
-      <div className="page-num">Page <span>{activeStep + 1} / {numPages}</span></div>
-      <nav aria-label="Page navigation example">
-        <ul className="pagination justify-content-center">
-          <li className="page-item">
-            <a className={`page-link ${activeStep === 0 ? 'disabled' : ''}`} tabIndex="-1" onClick={handleBack}>Previous</a>
-          </li>
-          {}
-          {pages()}
-          <li className="page-item">
-            <a className={`page-link ${activeStep === numPages - 1 ? 'disabled' : ''}`} onClick={handleNext}>Next</a>
-          </li>
-        </ul>
-      </nav>
-      <JobsModal open={open} closeModal={closeModal} job={job} />
-    </div>
+    <>
+      {jobs.length > 0 &&
+        <div className="col-md-8 offset-md-2">
+          <h2 className="text-center">Junior Github Jobs</h2>
+          <h5 className="text-right">Found {numJobs} Jobs</h5>
+          {jobsOnPage.map((job, i) => <Job key={i} job={job}
+            clicked={() => {
+              openModal()
+              selectedJob(job)
+            }} />
+          )}
+          <div className="page-num">Page <span>{activeStep + 1} / {numPages}</span></div>
+          <nav aria-label="Page navigation example">
+            <ul className="pagination justify-content-center">
+              <li className="page-item">
+                <a className={`page-link ${activeStep === 0 ? 'disabled' : ''}`} tabIndex="-1" onClick={handleBack}>Previous</a>
+              </li>
+              {}
+              {pages()}
+              <li className="page-item">
+                <a className={`page-link ${activeStep === numPages - 1 ? 'disabled' : ''}`} onClick={handleNext}>Next</a>
+              </li>
+            </ul>
+          </nav>
+          <JobsModal open={open} closeModal={closeModal} job={job} />
+        </div>
+      }
+    </>
   )
 }
