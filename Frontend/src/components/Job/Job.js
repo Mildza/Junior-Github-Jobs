@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import './Job.css'
+import logo from '../../../public/logo.png';
 
 const Job = ({ job, clicked }) => {
 
@@ -13,7 +14,7 @@ const Job = ({ job, clicked }) => {
       </div>
       <div className="col-md-5 job-item-date">
         <div className="job-logo" >
-          <img src={job.company_logo} alt={job.company} />
+          <img src={job.company_logo || logo} alt={job.company} />
         </div>
         <div className='job-date'>
           <p>{moment(job.created_at).format('llll')}</p>
